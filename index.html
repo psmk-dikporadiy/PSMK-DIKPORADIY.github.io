@@ -6,41 +6,74 @@
   <title>PSMK-DIKPORA-DIY</title>
   <link rel="icon" href="https://baldikbantul.jogjaprov.go.id/wp-content/uploads/2024/01/Coat_of_arms_of_Yogyakarta.svg.png" type="image/x-icon">
   <style>
-    html, body {
+    body, html {
       margin: 0;
       padding: 0;
       height: 100%;
-      width: 100%;
       font-family: sans-serif;
     }
+    .container {
+      display: flex;
+      height: 100vh;
+    }
     nav {
+      width: 220px;
       background-color: #003366;
       color: white;
       padding: 1rem;
-      font-weight: bold;
+    }
+    nav h2 {
+      font-size: 1.2rem;
+      margin-top: 0;
+    }
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0 0 0;
+    }
+    nav ul li {
+      margin: 0.5rem 0;
+    }
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+    }
+    nav ul li a:hover {
+      text-decoration: underline;
+    }
+    .content {
+      flex: 1;
     }
     iframe {
-      border: none;
       width: 100%;
-      height: calc(100% - 60px); /* sisakan tinggi navbar */
-      display: block;
+      height: 100%;
+      border: none;
     }
   </style>
 </head>
 <body>
+  <div class="container">
+    <!-- ✅ Sidebar -->
+    <nav>
+      <h2>PSMK DIY</h2>
+      <ul>
+        <li><a href="#" onclick="loadPage('dashboard')">Dashboard</a></li>
+        <li><a href="#" onclick="loadPage('profil')">Profil</a></li>
+        <li><a href="#" onclick="loadPage('rps')">RPS</a></li>
+        <!-- Tambahkan lainnya -->
+      </ul>
+    </nav>
 
-  <!-- ✅ Navbar tetap -->
-  <nav>
-    PSMK - DIKPORA DIY
-  </nav>
+    <!-- ✅ Konten iframe -->
+    <div class="content">
+      <iframe 
+        id="mainFrame"
+        src="https://script.google.com/macros/s/AKfycbzedXmIWX87HBe-KivxN45hypBeJXIlrqTozGTV2sDgD8ax4DanIeH808zV1x5cLRRT/exec"
+        title="Web App">
+      </iframe>
+    </div>
+  </div>
 
-  <!-- ✅ Konten iframe -->
-  <iframe 
-    src="https://script.google.com/macros/s/AKfycbzedXmIWX87HBe-KivxN45hypBeJXIlrqTozGTV2sDgD8ax4DanIeH808zV1x5cLRRT/exec"
-    loading="eager"
-    title="Web App">
-  </iframe>
 
 </body>
 </html>
-
