@@ -6,24 +6,35 @@
   <title>PSMK-DIKPORA-DIY</title>
   <link rel="icon" href="https://baldikbantul.jogjaprov.go.id/wp-content/uploads/2024/01/Coat_of_arms_of_Yogyakarta.svg.png" type="image/x-icon">
   <style>
+   <style>
     html, body {
       margin: 0;
       padding: 0;
       height: 100%;
-      width: 100%;
+      overflow: hidden;
       font-family: sans-serif;
     }
-    nav {
-      background-color: #003366;
-      color: white;
-      padding: 1rem;
-      font-weight: bold;
+    .iframe-container {
+      position: relative;
+      width: 100%;
+      height: 100vh;
     }
     iframe {
-      border: none;
       width: 100%;
-      height: calc(100% - 60px); /* sisakan tinggi navbar */
-      display: block;
+      height: 100%;
+      border: none;
+    }
+    .loader {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 1.2rem;
+      color: #666;
+      z-index: 10;
+    }
+  </style>
+
     }
   </style>
 </head>
@@ -31,8 +42,8 @@
 
   <iframe 
     src="https://script.google.com/macros/s/AKfycbzedXmIWX87HBe-KivxN45hypBeJXIlrqTozGTV2sDgD8ax4DanIeH808zV1x5cLRRT/exec"
-    loading="eager"
-    title="Web App">
+      onload="document.getElementById('loader').style.display='none';"
+      allowfullscreen>
   </iframe>
 
 </body>
