@@ -11,23 +11,34 @@
       padding: 0;
       height: 100%;
       font-family: sans-serif;
+      background-color: #f5f5f5;
     }
     .menu {
-      padding: 10px;
-      background-color: #2c3e50;
-      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      gap: 15px;
+      flex-wrap: wrap;
     }
-    select {
-      padding: 8px 12px;
-      border-radius: 4px;
+    .menu button {
+      background-color: #3498db;
+      color: white;
       border: none;
-      font-size: 1rem;
+      padding: 12px 20px;
       cursor: pointer;
+      border-radius: 5px;
+      font-size: 1rem;
+      transition: background 0.3s;
+    }
+    .menu button:hover {
+      background-color: #2980b9;
     }
     .iframe-container {
+      display: none; /* awalnya disembunyikan */
       position: relative;
       width: 100%;
-      height: calc(100vh - 50px); /* dikurangi tinggi menu */
+      height: 100vh;
     }
     iframe {
       width: 100%;
@@ -47,19 +58,16 @@
   </style>
 </head>
 <body>
-  <div class="menu">
-    Pilih Kabupaten: 
-    <select id="kotaSelect" onchange="loadIframe(this.value)">
-      <option value="">-- Pilih --</option>
-      <option value="bantul">Bantul</option>
-      <option value="jogja">Jogja</option>
-      <option value="sleman">Sleman</option>
-      <option value="kulonprogo">Kulonprogo</option>
-      <option value="gunungkidul">Gunung Kidul</option>
-    </select>
+
+  <div class="menu" id="menu">
+    <button onclick="loadIframe('bantul')">Bantul</button>
+    <button onclick="loadIframe('jogja')">Jogja</button>
+    <button onclick="loadIframe('sleman')">Sleman</button>
+    <button onclick="loadIframe('kulonprogo')">Kulonprogo</button>
+    <button onclick="loadIframe('gunungkidul')">Gunung Kidul</button>
   </div>
 
-  <div class="iframe-container">
+  <div class="iframe-container" id="iframeContainer">
     <div class="loader" id="loader">Loading...</div>
     <iframe id="mainFrame" allowfullscreen></iframe>
   </div>
@@ -75,19 +83,28 @@
 
     const iframe = document.getElementById('mainFrame');
     const loader = document.getElementById('loader');
+    const iframeContainer = document.getElementById('iframeContainer');
+    const menu = document.getElementById('menu');
 
     function loadIframe(kota) {
-      if (!kota) return; // jika belum pilih apa-apa, tidak melakukan apa-apa
       if (!urls[kota] || urls[kota] === "#") {
         alert("URL untuk " + kota + " belum tersedia.");
         return;
       }
+      // sembunyikan menu tombol
+      menu.style.display = 'none';
+      // tampilkan iframe container
+      iframeContainer.style.display = 'block';
+      // tampilkan loader
       loader.style.display = 'block';
+      // ganti src iframe
       iframe.src = urls[kota];
+      // sembunyikan loader saat iframe selesai load
       iframe.onload = () => {
         loader.style.display = 'none';
       }
     }
   </script>
+
 </body>
 </html>
