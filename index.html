@@ -5,40 +5,102 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PSMK-DIKPORA-DIY</title>
   <link rel="icon" href="https://baldikbantul.jogjaprov.go.id/wp-content/uploads/2024/01/Coat_of_arms_of_Yogyakarta.svg.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     html, body {
       margin: 0;
       padding: 0;
       height: 100%;
       font-family: sans-serif;
-      background-color: #f5f5f5;
+      overflow: hidden;
     }
-    .menu {
+
+    /* Sidebar */
+    #sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 240px;
+      height: 100vh;
+      background-color: #2c3e50;
+      color: white;
+      padding: 20px;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+      z-index: 1000;
+      display: block;
+    }
+    #sidebar img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 10px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    }
+    #sidebar h6 {
+      margin: 0;
+      font-weight: 600;
+    }
+    #sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 20px;
+    }
+    #sidebar ul li {
+      margin-bottom: 10px;
+    }
+    #sidebar ul li a {
+      color: white;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 10px;
+      border-radius: 4px;
+      transition: background 0.3s;
+    }
+    #sidebar ul li a:hover {
+      background-color: #2980b9;
+    }
+
+    /* Main content */
+    .main-content {
+      margin-left: 240px;
+      width: calc(100% - 240px);
+      height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .menu-buttons {
+      display: flex;
       gap: 15px;
       flex-wrap: wrap;
+      justify-content: center;
     }
-    .menu button {
+    .menu-buttons button {
+      padding: 12px 20px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
       background-color: #3498db;
       color: white;
-      border: none;
-      padding: 12px 20px;
-      cursor: pointer;
-      border-radius: 5px;
-      font-size: 1rem;
       transition: background 0.3s;
     }
-    .menu button:hover {
+    .menu-buttons button:hover {
       background-color: #2980b9;
     }
+
+    /* iframe container */
     .iframe-container {
-      display: none; /* awalnya disembunyikan */
       position: relative;
       width: 100%;
-      height: 100vh;
+      height: 100%;
+      display: none; /* awalnya disembunyikan */
     }
     iframe {
       width: 100%;
@@ -59,17 +121,36 @@
 </head>
 <body>
 
-  <div class="menu" id="menu">
-    <button onclick="loadIframe('bantul')">Bantul</button>
-    <button onclick="loadIframe('jogja')">Jogja</button>
-    <button onclick="loadIframe('sleman')">Sleman</button>
-    <button onclick="loadIframe('kulonprogo')">Kulonprogo</button>
-    <button onclick="loadIframe('gunungkidul')">Gunung Kidul</button>
-  </div>
+  <!-- Sidebar -->
+  <nav id="sidebar">
+    <div id="profileSidebar" class="text-center mb-4">
+      <img id="profileImageGuru" src="" alt="Foto Guru">
+      <h6 id="profileName">Nama Guru</h6>
+    </div>
 
-  <div class="iframe-container" id="iframeContainer">
-    <div class="loader" id="loader">Loading...</div>
-    <iframe id="mainFrame" allowfullscreen></iframe>
+    <ul>
+      <li><a href="#" onclick="showSection('overview')"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+      <li><a href="#" onclick="showSection('portfolio')"><span class="badge bg-primary ms-1">1</span> Profile</a></li>
+      <li><a href="#" onclick="showSection('dataSiswa')"><span class="badge bg-primary ms-1">2</span> Pengusulan</a></li>
+      <li><a href="#" onclick="showSection('administrasi')"><span class="badge bg-primary ms-1">3</span> Kirim</a></li>
+      <li><a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="main-content" id="mainContent">
+    <div class="menu-buttons" id="menuButtons">
+      <button onclick="loadIframe('bantul')">Bantul</button>
+      <button onclick="loadIframe('jogja')">Jogja</button>
+      <button onclick="loadIframe('sleman')">Sleman</button>
+      <button onclick="loadIframe('kulonprogo')">Kulonprogo</button>
+      <button onclick="loadIframe('gunungkidul')">Gunung Kidul</button>
+    </div>
+
+    <div class="iframe-container" id="iframeContainer">
+      <div class="loader" id="loader">Loading...</div>
+      <iframe id="mainFrame" allowfullscreen></iframe>
+    </div>
   </div>
 
   <script>
@@ -84,25 +165,37 @@
     const iframe = document.getElementById('mainFrame');
     const loader = document.getElementById('loader');
     const iframeContainer = document.getElementById('iframeContainer');
-    const menu = document.getElementById('menu');
+    const menuButtons = document.getElementById('menuButtons');
 
     function loadIframe(kota) {
       if (!urls[kota] || urls[kota] === "#") {
         alert("URL untuk " + kota + " belum tersedia.");
         return;
       }
-      // sembunyikan menu tombol
-      menu.style.display = 'none';
+
+      // sembunyikan tombol menu
+      menuButtons.style.display = 'none';
       // tampilkan iframe container
       iframeContainer.style.display = 'block';
-      // tampilkan loader
       loader.style.display = 'block';
-      // ganti src iframe
       iframe.src = urls[kota];
-      // sembunyikan loader saat iframe selesai load
+
       iframe.onload = () => {
         loader.style.display = 'none';
       }
+    }
+
+    // sidebar selalu tampil saat load halaman
+    window.onload = () => {
+      document.getElementById('sidebar').style.display = 'block';
+    }
+
+    function showSection(section) {
+      alert("Menu " + section + " diklik"); // contoh, bisa diganti fungsi nyata
+    }
+
+    function logout() {
+      alert("Logout"); // contoh, ganti dengan fungsi logout sebenarnya
     }
   </script>
 
