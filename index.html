@@ -13,22 +13,16 @@
       font-family: sans-serif;
     }
     .menu {
-      display: flex;
-      background-color: #2c3e50;
       padding: 10px;
-    }
-    .menu button {
-      background-color: #3498db;
+      background-color: #2c3e50;
       color: white;
-      border: none;
-      padding: 8px 16px;
-      margin-right: 10px;
-      cursor: pointer;
-      border-radius: 4px;
-      transition: background 0.3s;
     }
-    .menu button:hover {
-      background-color: #2980b9;
+    select {
+      padding: 8px 12px;
+      border-radius: 4px;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
     }
     .iframe-container {
       position: relative;
@@ -48,17 +42,21 @@
       font-size: 1.2rem;
       color: #666;
       z-index: 10;
-      display: none; /* awalnya disembunyikan */
+      display: none;
     }
   </style>
 </head>
 <body>
   <div class="menu">
-    <button onclick="loadIframe('bantul')">Bantul</button>
-    <button onclick="loadIframe('jogja')">Jogja</button>
-    <button onclick="loadIframe('sleman')">Sleman</button>
-    <button onclick="loadIframe('kulonprogo')">Kulonprogo</button>
-    <button onclick="loadIframe('gunungkidul')">Gunung Kidul</button>
+    Pilih Kabupaten: 
+    <select id="kotaSelect" onchange="loadIframe(this.value)">
+      <option value="">-- Pilih --</option>
+      <option value="bantul">Bantul</option>
+      <option value="jogja">Jogja</option>
+      <option value="sleman">Sleman</option>
+      <option value="kulonprogo">Kulonprogo</option>
+      <option value="gunungkidul">Gunung Kidul</option>
+    </select>
   </div>
 
   <div class="iframe-container">
@@ -69,7 +67,7 @@
   <script>
     const urls = {
       bantul: "https://script.google.com/macros/s/AKfycbyvlOLr3nUbrowV-iK8zPrRo5yct-M-mwKpck3X2Bw38heSE2P6zF7A-DH8RXjUI8qd/exec",
-      jogja: "https://script.google.com/macros/s/AKfycbw6r5jnkFEc5gcSt7h_6JiqlIN2iSQx_J5A8ywr4IvTnV3XvuUO-v8ii3DGDbZcHQ_D/exec",       // ganti dengan URL Jogja
+      jogja: "#",       // ganti dengan URL Jogja
       sleman: "#",      // ganti dengan URL Sleman
       kulonprogo: "#",  // ganti dengan URL Kulonprogo
       gunungkidul: "#"  // ganti dengan URL Gunung Kidul
@@ -78,21 +76,17 @@
     const iframe = document.getElementById('mainFrame');
     const loader = document.getElementById('loader');
 
-    // load default iframe saat halaman pertama
-    iframe.src = urls['bantul'];
-    loader.style.display = 'block';
-
-    iframe.onload = () => {
-      loader.style.display = 'none';
-    }
-
     function loadIframe(kota) {
+      if (!kota) return; // jika belum pilih apa-apa, tidak melakukan apa-apa
       if (!urls[kota] || urls[kota] === "#") {
         alert("URL untuk " + kota + " belum tersedia.");
         return;
       }
       loader.style.display = 'block';
       iframe.src = urls[kota];
+      iframe.onload = () => {
+        loader.style.display = 'none';
+      }
     }
   </script>
 </body>
