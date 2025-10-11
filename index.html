@@ -13,8 +13,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #4e54c8, #8f94fb); /* lebih elegan */
       text-align: center;
     }
 
@@ -25,23 +25,23 @@
       gap: 20px;
       padding: 30px 20px;
       border-radius: 20px;
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
       box-shadow: 0 10px 25px rgba(0,0,0,0.2);
       width: 90%;
       max-width: 400px;
     }
 
-    /* Judul dua warna: isi kuning muda, garis hitam */
+    /* Judul dengan warna emas dan outline hitam */
     .title h1, .title h2, .title h3 {
       margin: 5px 0;
-      color: #FFFACD; /* kuning muda */
-      -webkit-text-stroke: 1px #000000; /* garis hitam */
+      color: #FFD700; /* kuning emas */
+      -webkit-text-stroke: 1.2px #000000; /* garis hitam */
       font-weight: bold;
     }
 
-    .title h1 { font-size: 1.4rem; }
-    .title h2 { font-size: 1.15rem; }
+    .title h1 { font-size: 1.5rem; }
+    .title h2 { font-size: 1.2rem; }
     .title h3 { font-size: 1rem; font-weight: normal; }
 
     .profile {
@@ -77,22 +77,23 @@
       border: none;
       border-radius: 10px;
       cursor: pointer;
-      background-color: #3498db;
-      color: white;
+      background-color: #FFD700; /* tombol emas */
+      color: #000; /* teks hitam */
+      font-weight: bold;
       transition: all 0.3s;
       width: 100%;
     }
 
     .button-container button:hover {
-      background-color: #2980b9;
+      background-color: #FFC300; /* sedikit lebih terang saat hover */
       transform: translateY(-2px);
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
 
     @media (max-width: 400px) {
-      .title h1 { font-size: 1.2rem; }
-      .title h2 { font-size: 1rem; }
-      .title h3 { font-size: 0.9rem; }
+      .title h1 { font-size: 1.3rem; }
+      .title h2 { font-size: 1.1rem; }
+      .title h3 { font-size: 0.95rem; }
       .profile img { width: 60px; height: 60px; }
       .profile h2 { font-size: 0.9rem; }
       .button-container button { font-size: 1rem; padding: 12px; }
