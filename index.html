@@ -32,17 +32,17 @@
       max-width: 400px;
     }
 
-    .title {
-      color: #FFD700; /* warna kuning */
-      text-shadow: 0 2px 6px rgba(0,0,0,0.6);
-    }
-
+    /* Judul dua warna: isi kuning muda, garis hitam */
     .title h1, .title h2, .title h3 {
       margin: 5px 0;
-      padding-bottom: 5px;
-      border-bottom: 2px solid #FFD700; /* garis di bawah */
-      display: inline-block; /* garis sesuai panjang tulisan */
+      color: #FFFACD; /* kuning muda */
+      -webkit-text-stroke: 1px #000000; /* garis hitam */
+      font-weight: bold;
     }
+
+    .title h1 { font-size: 1.4rem; }
+    .title h2 { font-size: 1.15rem; }
+    .title h3 { font-size: 1rem; font-weight: normal; }
 
     .profile {
       display: flex;
