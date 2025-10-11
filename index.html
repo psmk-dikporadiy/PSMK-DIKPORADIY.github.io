@@ -13,42 +13,91 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: sans-serif;
-      background-color: #f0f2f5;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 40px 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .profile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .profile img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid white;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .profile h2 {
+      margin: 0;
+      color: white;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.4);
     }
 
     .button-container {
       display: flex;
       flex-direction: column;
-      gap: 20px;
-      align-items: center;
+      gap: 15px;
+      width: 100%;
     }
 
     .button-container button {
-      padding: 15px 30px;
-      font-size: 1.2rem;
+      padding: 12px 20px;
+      font-size: 1.1rem;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
       cursor: pointer;
       background-color: #3498db;
       color: white;
-      transition: background 0.3s, transform 0.2s;
+      transition: all 0.3s;
+      width: 100%;
     }
 
     .button-container button:hover {
       background-color: #2980b9;
-      transform: scale(1.05);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    @media (max-width: 500px) {
+      .container {
+        padding: 30px 20px;
+        border-radius: 15px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <div class="button-container">
-    <button onclick="window.location.href='https://psmk-dikporadiy.github.io/bantul'">Bantul</button>
-    <button onclick="alert('URL Jogja belum tersedia')">Jogja</button>
-    <button onclick="alert('URL Sleman belum tersedia')">Sleman</button>
-    <button onclick="alert('URL Kulonprogo belum tersedia')">Kulonprogo</button>
-    <button onclick="alert('URL Gunungkidul belum tersedia')">Gunung Kidul</button>
+  <div class="container">
+    <div class="profile">
+      <img src="https://baldikbantul.jogjaprov.go.id/wp-content/uploads/2024/01/Coat_of_arms_of_Yogyakarta.svg.png" alt="Logo DIY">
+      <h2>PSMK-DIKPORA DIY</h2>
+    </div>
+
+    <div class="button-container">
+      <button onclick="window.location.href='https://psmk-dikporadiy.github.io/bantul'">Bantul</button>
+      <button onclick="alert('URL Jogja belum tersedia')">Jogja</button>
+      <button onclick="alert('URL Sleman belum tersedia')">Sleman</button>
+      <button onclick="alert('URL Kulonprogo belum tersedia')">Kulonprogo</button>
+      <button onclick="alert('URL Gunungkidul belum tersedia')">Gunung Kidul</button>
+    </div>
   </div>
 
 </body>
