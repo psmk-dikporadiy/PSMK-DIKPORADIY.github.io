@@ -5,199 +5,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PSMK-DIKPORA-DIY</title>
   <link rel="icon" href="https://baldikbantul.jogjaprov.go.id/wp-content/uploads/2024/01/Coat_of_arms_of_Yogyakarta.svg.png" type="image/x-icon">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    html, body {
+    body {
       margin: 0;
       padding: 0;
-      height: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       font-family: sans-serif;
-      overflow: hidden;
+      background-color: #f0f2f5;
     }
 
-    /* Sidebar */
-    #sidebar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 240px;
-      height: 100vh;
-      background-color: #2c3e50;
-      color: white;
-      padding: 20px;
-      box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-      z-index: 1000;
-      display: block;
-    }
-    #sidebar img {
-      width: 80px;
-      height: 80px;
-      object-fit: cover;
-      border-radius: 50%;
-      margin-bottom: 10px;
-      box-shadow: 0 0 5px rgba(0,0,0,0.3);
-    }
-    #sidebar h6 {
-      margin: 0;
-      font-weight: 600;
-    }
-    #sidebar ul {
-      list-style: none;
-      padding: 0;
-      margin-top: 20px;
-    }
-    #sidebar ul li {
-      margin-bottom: 10px;
-    }
-    #sidebar ul li a {
-      color: white;
-      text-decoration: none;
+    .button-container {
       display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 8px 10px;
-      border-radius: 4px;
-      transition: background 0.3s;
-    }
-    #sidebar ul li a:hover {
-      background-color: #2980b9;
-    }
-
-    /* Main content */
-    .main-content {
-      margin-left: 240px;
-      width: calc(100% - 240px);
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       flex-direction: column;
-      position: relative;
+      gap: 20px;
+      align-items: center;
     }
 
-    .menu-buttons {
-      display: flex;
-      gap: 15px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .menu-buttons button {
-      padding: 12px 20px;
-      font-size: 1rem;
+    .button-container button {
+      padding: 15px 30px;
+      font-size: 1.2rem;
       border: none;
-      border-radius: 5px;
+      border-radius: 8px;
       cursor: pointer;
       background-color: #3498db;
       color: white;
-      transition: background 0.3s;
-    }
-    .menu-buttons button:hover {
-      background-color: #2980b9;
+      transition: background 0.3s, transform 0.2s;
     }
 
-    /* iframe container */
-    .iframe-container {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      display: none; /* awalnya disembunyikan */
-    }
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-    .loader {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 1.2rem;
-      color: #666;
-      z-index: 10;
-      display: none;
+    .button-container button:hover {
+      background-color: #2980b9;
+      transform: scale(1.05);
     }
   </style>
 </head>
 <body>
 
-  <!-- Sidebar -->
-  <nav id="sidebar">
-    <div id="profileSidebar" class="text-center mb-4">
-      <img id="profileImageGuru" src="" alt="Foto Guru">
-      <h6 id="profileName">Nama Guru</h6>
-    </div>
-
-    <ul>
-      <li><a href="#" onclick="showSection('overview')"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
-      <li><a href="#" onclick="showSection('portfolio')"><span class="badge bg-primary ms-1">1</span> Profile</a></li>
-      <li><a href="#" onclick="showSection('dataSiswa')"><span class="badge bg-primary ms-1">2</span> Pengusulan</a></li>
-      <li><a href="#" onclick="showSection('administrasi')"><span class="badge bg-primary ms-1">3</span> Kirim</a></li>
-      <li><a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
-    </ul>
-  </nav>
-
-  <!-- Main Content -->
-  <div class="main-content" id="mainContent">
-    <div class="menu-buttons" id="menuButtons">
-      <button onclick="loadIframe('bantul')">Bantul</button>
-      <button onclick="loadIframe('jogja')">Jogja</button>
-      <button onclick="loadIframe('sleman')">Sleman</button>
-      <button onclick="loadIframe('kulonprogo')">Kulonprogo</button>
-      <button onclick="loadIframe('gunungkidul')">Gunung Kidul</button>
-    </div>
-
-    <div class="iframe-container" id="iframeContainer">
-      <div class="loader" id="loader">Loading...</div>
-      <iframe id="mainFrame" allowfullscreen></iframe>
-    </div>
+  <div class="button-container">
+    <button onclick="window.location.href='https://script.google.com/macros/s/AKfycbyvlOLr3nUbrowV-iK8zPrRo5yct-M-mwKpck3X2Bw38heSE2P6zF7A-DH8RXjUI8qd/exec'">Bantul</button>
+    <button onclick="alert('URL Jogja belum tersedia')">Jogja</button>
+    <button onclick="alert('URL Sleman belum tersedia')">Sleman</button>
+    <button onclick="alert('URL Kulonprogo belum tersedia')">Kulonprogo</button>
+    <button onclick="alert('URL Gunungkidul belum tersedia')">Gunung Kidul</button>
   </div>
-
-  <script>
-    const urls = {
-      bantul: "https://script.google.com/macros/s/AKfycbyvlOLr3nUbrowV-iK8zPrRo5yct-M-mwKpck3X2Bw38heSE2P6zF7A-DH8RXjUI8qd/exec",
-      jogja: "#",       // ganti dengan URL Jogja
-      sleman: "#",      // ganti dengan URL Sleman
-      kulonprogo: "#",  // ganti dengan URL Kulonprogo
-      gunungkidul: "#"  // ganti dengan URL Gunung Kidul
-    };
-
-    const iframe = document.getElementById('mainFrame');
-    const loader = document.getElementById('loader');
-    const iframeContainer = document.getElementById('iframeContainer');
-    const menuButtons = document.getElementById('menuButtons');
-
-    function loadIframe(kota) {
-      if (!urls[kota] || urls[kota] === "#") {
-        alert("URL untuk " + kota + " belum tersedia.");
-        return;
-      }
-
-      // sembunyikan tombol menu
-      menuButtons.style.display = 'none';
-      // tampilkan iframe container
-      iframeContainer.style.display = 'block';
-      loader.style.display = 'block';
-      iframe.src = urls[kota];
-
-      iframe.onload = () => {
-        loader.style.display = 'none';
-      }
-    }
-
-    // sidebar selalu tampil saat load halaman
-    window.onload = () => {
-      document.getElementById('sidebar').style.display = 'block';
-    }
-
-    function showSection(section) {
-      alert("Menu " + section + " diklik"); // contoh, bisa diganti fungsi nyata
-    }
-
-    function logout() {
-      alert("Logout"); // contoh, ganti dengan fungsi logout sebenarnya
-    }
-  </script>
 
 </body>
 </html>
