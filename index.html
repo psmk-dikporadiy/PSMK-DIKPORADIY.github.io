@@ -1,104 +1,48 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PSMK-DIKPORA-DIY</title>
-    <link rel="icon" href="https://baldikbantul.jogjaprov.go.id/wp-content/uploads/2024/01/Coat_of_arms_of_Yogyakarta.svg.png" type="image/x-icon">
-    
-    <link rel="preconnect" href="https://script.google.com">
-    <link rel="dns-prefetch" href="https://script.google.com">
-
-    <style>
-        /* ================================================= */
-        /* Gaya Dasar & Centering Kontainer */
-        /* ================================================= */
-        html, body {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            background-color: #f0f0f0; /* Latar belakang halaman */
-            font-family: sans-serif;
-        }
-        .iframe-container {
-            /* Ukuran Kontainer Kecil dan Terpusat */
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80%;   /* 80% dari lebar layar */
-            height: 80vh; /* 80% dari tinggi layar */
-            
-            /* Styling Elegansi */
-            border: 1px solid #ddd; 
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            overflow: hidden; 
-            background-color: #ffffff; /* Latar belakang putih saat memuat */
-        }
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            /* Awalnya tersembunyi agar loader terlihat saat konten belum siap */
-            opacity: 0;
-            transition: opacity 0.5s ease; /* Transisi halus saat iframe dimuat */
-        }
-
-        /* ================================================= */
-        /* Loader (Spinner Animasi) */
-        /* ================================================= */
-        .loader-wrapper {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background-color: #ffffff;
-            z-index: 10;
-        }
-
-        .spinner {
-            border: 4px solid #f3f3f3; /* Light grey */
-            border-top: 4px solid #007bff; /* Blue */
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-        }
-
-        .loader-text {
-            margin-top: 15px;
-            font-size: 1rem;
-            color: #666;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PSMK-DIKPORA-DIY</title>
+  <link rel="icon" href="https://baldikbantul.jogjaprov.go.id/wp-content/uploads/2024/01/Coat_of_arms_of_Yogyakarta.svg.png" type="image/x-icon">
+   <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: sans-serif;
+    }
+    .iframe-container {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .loader {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 1.2rem;
+      color: #666;
+      z-index: 10;
+    }
+  </style>
 </head>
+</html>
 <body>
-    <div class="iframe-container">
-        
-        <div class="loader-wrapper" id="loader">
-            <div class="spinner"></div>
-            <div class="loader-text">Memuat Data...</div>
-        </div>
-
-        <iframe 
-            src="https://script.google.com/macros/s/AKfycbwaGJWY9MiiqpwsfO5oCjnJAi9gYHUAbKEB8tp1fXujEriI9ewt33iB1xegLdU15r3C/exec" 
-            onload="
-                document.getElementById('loader').style.display='none'; 
-                this.style.opacity = 1; 
-            "
-            allowfullscreen>
-        </iframe>
-    </div>
+  <div class="iframe-container">
+    <div class="loader" id="loader">Loading...</div>
+    <iframe 
+      src="https://script.google.com/macros/s/AKfycbwaGJWY9MiiqpwsfO5oCjnJAi9gYHUAbKEB8tp1fXujEriI9ewt33iB1xegLdU15r3C/exec" 
+      onload="document.getElementById('loader').style.display='none';"
+      allowfullscreen>
+    </iframe>
+  </div>
 </body>
 </html>
