@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SIPPEKA</title>
+  <title>SIPPEKA - DIKPORA DIY</title>
   <link rel="icon" href="https://baldikbantul.jogjaprov.go.id/wp-content/uploads/2024/01/Coat_of_arms_of_Yogyakarta.svg.png">
   <style>
     body {
@@ -14,51 +14,84 @@
       justify-content: center;
       align-items: center;
       background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      font-family: "Segoe UI", sans-serif;
+      font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       color: #fff;
     }
 
     .container {
-      width: 100%;
-      max-width: 380px;
+      width: 90%;
+      /* Ukuran ditingkatkan dari 380px ke 600px */
+      max-width: 600px; 
       text-align: center;
-      padding: 30px 20px;
+      padding: 50px 40px;
+      background: rgba(255, 255, 255, 0.05); /* Memberikan efek glassmorphism tipis */
+      border-radius: 24px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+      border: 1px solid rgba(255,255,255,0.1);
     }
 
     .logo {
-      width: 90px;
-      margin-bottom: 15px;
+      /* Ukuran logo diperbesar */
+      width: 120px;
+      margin-bottom: 25px;
+      filter: drop-shadow(0 5px 15px rgba(0,0,0,0.2));
     }
 
     h1 {
-      font-size: 1.3rem;
-      margin-bottom: 25px;
-      font-weight: 600;
+      /* Ukuran font judul diperbesar */
+      font-size: 1.8rem;
+      margin-bottom: 40px;
+      font-weight: 700;
+      line-height: 1.4;
+      letter-spacing: 0.5px;
+    }
+
+    .button-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr; /* Membagi dua kolom untuk SMA & SMK */
+      gap: 20px;
     }
 
     .link-btn {
-      display: block;
-      width: 100%;
-      padding: 14px;
-      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
       background: #ffffff;
       color: #2c5364;
       text-decoration: none;
-      font-weight: 600;
-      border-radius: 12px;
-      transition: all 0.25s ease;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+      font-weight: 700;
+      font-size: 1.1rem;
+      border-radius: 16px;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     }
 
     .link-btn:hover {
-      transform: translateY(-3px);
-      background: #f1f5f9;
+      transform: scale(1.05);
+      background: #f8fafc;
+      box-shadow: 0 12px 25px rgba(0,0,0,0.2);
     }
 
     footer {
-      margin-top: 25px;
-      font-size: 0.75rem;
-      opacity: 0.8;
+      margin-top: 40px;
+      font-size: 0.9rem;
+      opacity: 0.6;
+      letter-spacing: 1px;
+    }
+
+    /* Responsif untuk HP agar tetap rapi */
+    @media (max-width: 480px) {
+      .button-group {
+        grid-template-columns: 1fr;
+      }
+      h1 {
+        font-size: 1.4rem;
+      }
+      .container {
+        padding: 30px 20px;
+      }
     }
   </style>
 </head>
@@ -71,24 +104,20 @@
       alt="Logo DIY"
     >
 
-    <h1>SIPPEKA <br> Sistem Integrasi Penilai Perizinan Elektronik SMK/SMA DIY 2026</h1>
+    <h1>SIPPEKA <br> <span style="font-weight: 300; font-size: 0.9em; opacity: 0.9;">Sistem Integrasi Penilai Perizinan Elektronik <br> SMK/SMA DIY 2026</span></h1>
 
-    <!-- LINK SMA -->
-    <a 
-      href="https://psmk-dikporadiy.github.io/perizinan/sma" 
-      class="link-btn">
-      Perizinan SMA
-    </a>
+    <div class="button-group">
+      <a href="https://psmk-dikporadiy.github.io/perizinan/sma" class="link-btn">
+        Perizinan SMA
+      </a>
 
-    <!-- LINK SMK -->
-    <a 
-      href="https://psmk-dikporadiy.github.io/perizinan/smk" 
-      class="link-btn">
-      Perizinan SMK
-    </a>
+      <a href="https://psmk-dikporadiy.github.io/perizinan/smk" class="link-btn">
+        Perizinan SMK
+      </a>
+    </div>
 
     <footer>
-      © 2026 Dinas Pendidikan DIY
+      © 2026 DINAS PENDIDIKAN DIY
     </footer>
   </div>
 
