@@ -38,10 +38,11 @@
 <body>
   <div class="iframe-container">
     <div class="loader" id="loader">Loading...</div>
-    <iframe
-  src="https://script.google.com/macros/s/AKfycbyMSH80dzygmNz_k-5KMDPPydZX8B5k-GcDexqrB--EAPnEHmCMSNk_491qGEYY3Opn/exec"
-  allowfullscreen
-></iframe>
+    <iframe 
+      src="https://script.google.com/macros/s/AKfycbyMSH80dzygmNz_k-5KMDPPydZX8B5k-GcDexqrB--EAPnEHmCMSNk_491qGEYY3Opn/exec" 
+      onload="document.getElementById('loader').style.display='none';"
+      allowfullscreen>
+    </iframe>
   </div>
 </body>
 </html>
