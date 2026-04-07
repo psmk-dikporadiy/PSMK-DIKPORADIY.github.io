@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -6,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PSMK-DIKPORA-DIY</title>
   <link rel="icon" href="https://baldikbantul.jogjaprov.go.id/wp-content/uploads/2024/01/Coat_of_arms_of_Yogyakarta.svg.png" type="image/x-icon">
-   <style>
+  
+  <style>
     html, body {
       margin: 0;
       padding: 0;
@@ -14,16 +14,19 @@
       overflow: hidden;
       font-family: sans-serif;
     }
+
     .iframe-container {
       position: relative;
       width: 100%;
       height: 100vh;
     }
+
     iframe {
       width: 100%;
       height: 100%;
       border: none;
     }
+
     .loader {
       position: absolute;
       top: 50%;
@@ -33,17 +36,28 @@
       color: #666;
       z-index: 10;
     }
+
+    .hidden {
+      display: none;
+    }
   </style>
 </head>
-</html>
+
 <body>
   <div class="iframe-container">
     <div class="loader" id="loader">Loading...</div>
+
     <iframe 
       src="https://script.google.com/macros/s/AKfycbyUe1zDM6ZqV4HCdmgRWc2lQaiWDUjHm_t7bcqGl8nwgB9wW-fDxjID4X1TAF5mtWUqeQ/exec" 
-      onload="document.getElementById('loader').style.display='none';"
+      onload="hideLoader()"
       allowfullscreen>
     </iframe>
   </div>
+
+  <script>
+    function hideLoader() {
+      document.getElementById('loader').classList.add('hidden');
+    }
+  </script>
 </body>
 </html>
