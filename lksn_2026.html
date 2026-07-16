@@ -1,97 +1,47 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-
-<meta name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
-
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-
-<title>PSMK-DIKPORA-DIY</title>
-
-<link rel="icon"
-      href="https://baldikbantul.jogjaprov.go.id/wp-content/uploads/2024/01/Coat_of_arms_of_Yogyakarta.svg.png">
-
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html,
-body{
-    width:100%;
-    height:100%;
-    overflow:hidden;
-    background:#fff;
-    font-family:Arial,Helvetica,sans-serif;
-    -webkit-text-size-adjust:100%;
-}
-
-.iframe-container{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100vw;
-    height:100dvh; /* Browser HP terbaru */
-    height:100vh;  /* Fallback */
-    overflow:hidden;
-}
-
-iframe{
-    display:block;
-    width:100%;
-    height:100%;
-    border:0;
-    background:#fff;
-}
-
-.loader{
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    font-size:18px;
-    color:#555;
-    z-index:9999;
-    text-align:center;
-}
-
-@supports (height:100svh){
-    .iframe-container{
-        height:100svh;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PSMK-DIKPORA-DIY</title>
+  <link rel="icon" href="https://baldikbantul.jogjaprov.go.id/wp-content/uploads/2024/01/Coat_of_arms_of_Yogyakarta.svg.png" type="image/x-icon">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: sans-serif;
     }
-}
-
-@supports (height:100lvh){
-    .iframe-container{
-        height:100lvh;
+    .iframe-container {
+      position: relative;
+      width: 100%;
+      height: 100vh;
     }
-}
-</style>
-
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .loader {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 1.2rem;
+      color: #666;
+      z-index: 10;
+    }
+  </style>
 </head>
-
 <body>
-
-<div class="iframe-container">
-    <div class="loader" id="loader">
-        Memuat aplikasi...
-    </div>
-
-    <iframe
-        src="https://script.google.com/macros/s/AKfycbzKAyDuGxfmH1OmzUcAaoG4-pusfPsUVMdnBaM8qO4a0bkCQ3CFQZ6U9_Pl4FmoIFWzYQ/exec"
-        allow="fullscreen"
-        allowfullscreen
-        loading="eager"
-        onload="document.getElementById('loader').style.display='none';">
+  <div class="iframe-container">
+    <div class="loader" id="loader">Memuat Sistem...</div>
+    <iframe 
+      src="https://script.google.com/macros/s/AKfycbzKAyDuGxfmH1OmzUcAaoG4-pusfPsUVMdnBaM8qO4a0bkCQ3CFQZ6U9_Pl4FmoIFWzYQ/exec" 
+      onload="document.getElementById('loader').style.display='none';"
+      allowfullscreen>
     </iframe>
-
-</div>
-
+  </div>
 </body>
 </html>
