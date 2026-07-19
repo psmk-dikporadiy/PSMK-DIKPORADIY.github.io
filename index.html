@@ -1,48 +1,147 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PSMK-DIKPORA-DIY</title>
-  <link rel="icon" href="https://baldikbantul.jogjaprov.go.id/wp-content/uploads/2024/01/Coat_of_arms_of_Yogyakarta.svg.png" type="image/x-icon">
-   <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow: hidden;
-      font-family: sans-serif;
-    }
-    .iframe-container {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-    }
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-    .loader {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 1.2rem;
-      color: #666;
-      z-index: 10;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Aplikasi - PSMK Dikpora DIY</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --hover-color: #1d4ed8;
+            --bg-color: #f3f4f6;
+            --text-main: #1f2937;
+            --text-muted: #6b7280;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin: 0 0 10px 0;
+            color: var(--primary-color);
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        .category-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: var(--text-main);
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 10px;
+            margin: 40px 0 20px 0;
+        }
+
+        .grid-menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .menu-btn {
+            background-color: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 24px 20px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 80px;
+        }
+
+        .menu-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        /* Footer styling */
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
-</html>
 <body>
-  <div class="iframe-container">
-    <div class="loader" id="loader">Loading...</div>
-    <iframe 
-      src="https://script.google.com/macros/s/AKfycbwaGJWY9MiiqpwsfO5oCjnJAi9gYHUAbKEB8tp1fXujEriI9ewt33iB1xegLdU15r3C/exec" 
-      onload="document.getElementById('loader').style.display='none';"
-      allowfullscreen>
-    </iframe>
-  </div>
+
+<div class="container">
+    <div class="header">
+        <h1>Portal Aplikasi PSMK</h1>
+        <p>Sistem Informasi Bidang Pendidikan Menengah Kejuruan</p>
+    </div>
+
+    <!-- Kategori 1: Kompetisi & Acara -->
+    <div class="category-title">Kompetisi & LKS</div>
+    <div class="grid-menu">
+        <a href="lksn_2026.html" class="menu-btn">LKS Nasional 2026</a>
+        <a href="lksn.html" class="menu-btn">LKS Nasional (Arsip)</a>
+        <a href="lks_foto.html" class="menu-btn">Galeri Foto LKS</a>
+        <a href="juri.html" class="menu-btn">Data Juri</a>
+        <a href="peserta.html" class="menu-btn">Data Peserta</a>
+    </div>
+
+    <!-- Kategori 2: Data Sekolah & Kelembagaan -->
+    <div class="category-title">Data Kelembagaan</div>
+    <div class="grid-menu">
+        <a href="smk.html" class="menu-btn">Data SMK</a>
+        <a href="sleman.html" class="menu-btn">Data SMK Sleman</a>
+        <a href="perizinan.html" class="menu-btn">Perizinan SMK</a>
+        <a href="blud.html" class="menu-btn">Dashboard BLUD</a>
+        <a href="smk-blud.html" class="menu-btn">Data SMK BLUD</a>
+        <a href="luar_negeri.html" class="menu-btn">Kerja Sama Luar Negeri</a>
+    </div>
+
+    <!-- Kategori 3: Program & Kurikulum -->
+    <div class="category-title">Program & Akademik</div>
+    <div class="grid-menu">
+        <a href="bimtek.html" class="menu-btn">Bimtek Pendampingan</a>
+        <a href="kelulusan.html" class="menu-btn">Data Kelulusan</a>
+        <a href="pip.html" class="menu-btn">Program Indonesia Pintar (PIP)</a>
+        <a href="revit2026.html" class="menu-btn">Revitalisasi SMK 2026</a>
+        <a href="revit.html" class="menu-btn">Revitalisasi SMK (Arsip)</a>
+        <a href="winasis.html" class="menu-btn">Aplikasi Winasis</a>
+    </div>
+
+    <!-- Kategori 4: Administrasi -->
+    <div class="category-title">Administrasi</div>
+    <div class="grid-menu">
+        <a href="spj.html" class="menu-btn">Pengelolaan SPJ</a>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2026 Dinas Pendidikan, Pemuda, dan Olahraga Daerah Istimewa Yogyakarta</p>
+    </div>
+</div>
+
 </body>
 </html>
