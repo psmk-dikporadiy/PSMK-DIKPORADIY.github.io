@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Aplikasi - PSMK Dikpora DIY</title>
+    <title>Portal Berita PSMK Dikpora DIY</title>
     
-    <!-- Font Inter untuk Tipografi Modern -->
+    <!-- Font Inter untuk Tampilan Modern -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- FontAwesome untuk Ikon -->
@@ -15,11 +15,10 @@
         :root {
             --primary: #1e3a8a; /* Biru Gelap DIY */
             --secondary: #3b82f6; /* Biru Terang */
-            --accent: #f59e0b; /* Kuning Keemasan */
-            --bg-color: #f1f5f9;
-            --card-bg: rgba(255, 255, 255, 0.95);
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
             --text-main: #0f172a;
-            --text-muted: #475569;
+            --text-muted: #64748b;
         }
 
         * {
@@ -31,207 +30,161 @@
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-color);
-            /* Latar belakang dengan pola halus */
-            background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
-            background-size: 20px 20px;
             color: var(--text-main);
             line-height: 1.6;
-            padding-bottom: 40px;
         }
 
-        /* --- HEADER STYLING --- */
+        /* --- HEADER --- */
         .header {
             background: linear-gradient(135deg, var(--primary) 0%, #2563eb 100%);
             color: white;
-            padding: 50px 20px 40px;
+            padding: 60px 20px;
             text-align: center;
-            border-bottom-left-radius: 40px;
-            border-bottom-right-radius: 40px;
-            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.2);
-            margin-bottom: -30px; /* Overlap effect */
-            position: relative;
-            z-index: 1;
-        }
-
-        .header h1 {
-            font-size: 2.2rem;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            margin-bottom: 5px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 20px rgba(37, 99, 235, 0.15);
         }
 
         .header h2 {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 600;
-            color: #cbd5e1;
-            margin-bottom: 5px;
+            color: #bfdbfe;
+            margin-bottom: 8px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 15px;
         }
 
         .header p {
-            font-size: 0.95rem;
-            font-weight: 400;
+            font-size: 1.1rem;
             opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        /* --- CONTAINER & SECTIONS --- */
+        /* --- KONTEN UTAMA (BERITA) --- */
         .container {
             max-width: 1200px;
-            margin: 0 auto;
+            margin: -30px auto 40px;
             padding: 0 20px;
             position: relative;
             z-index: 2;
         }
-
-        .category-wrapper {
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(10px);
-            border-radius: 24px;
-            padding: 30px 20px;
-            margin-top: 40px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.8);
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e2e8f0;
         }
 
-        .section-title {
-            font-size: 1.25rem;
-            font-weight: 700;
+        .section-header h3 {
+            font-size: 1.4rem;
             color: var(--primary);
-            margin-bottom: 20px;
             display: flex;
             align-items: center;
-            gap: 12px;
-            border-bottom: 2px solid #e2e8f0;
-            padding-bottom: 10px;
+            gap: 10px;
         }
 
-        .section-title i {
-            color: var(--secondary);
-            background: #eff6ff;
-            padding: 10px;
-            border-radius: 12px;
-            font-size: 1.1rem;
-        }
-
-        /* --- GRID & CARDS --- */
-        .grid {
+        /* --- GRID BERITA --- */
+        .news-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-            gap: 16px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
         }
 
-        .card {
+        /* --- KARTU BERITA --- */
+        .news-card {
             background: var(--card-bg);
-            border-radius: 20px;
-            padding: 24px 16px;
-            text-decoration: none;
-            color: var(--text-main);
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
-            border: 1px solid #f1f5f9;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
+            border: 1px solid #f1f5f9;
         }
 
-        .card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 15px 30px rgba(59, 130, 246, 0.15);
-            border-color: #bfdbfe;
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
         }
 
-        .card i {
-            font-size: 2.8rem;
-            color: var(--secondary);
-            transition: all 0.3s ease;
+        .news-image {
+            width: 100%;
+            height: 200px;
+            background-color: #e2e8f0;
+            object-fit: cover;
         }
 
-        .card:hover i {
-            color: var(--primary);
-            transform: scale(1.1);
+        .news-content {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
         }
 
-        .card span {
+        .news-date {
             font-size: 0.85rem;
+            color: var(--secondary);
             font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .news-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 10px;
             line-height: 1.4;
         }
 
-        /* --- FEATURED CARD (MOMENKU) --- */
-        .card.featured {
-            background: linear-gradient(135deg, #f59e0b, #ea580c);
-            color: white;
-            border: none;
-            grid-column: span 2;
-            box-shadow: 0 8px 25px rgba(234, 88, 12, 0.3);
+        .news-excerpt {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
-        .card.featured i {
-            color: white;
-            font-size: 3.5rem;
-            margin-bottom: 5px;
+        .read-more {
+            margin-top: auto;
+            display: inline-block;
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
         }
 
-        .card.featured:hover i {
-            color: white;
-            transform: rotate(15deg) scale(1.1);
-        }
-
-        .card.featured span {
-            font-size: 1.1rem;
-            font-weight: 700;
-        }
-        
-        .card.featured .sub-text {
-            font-size: 0.75rem;
-            font-weight: 400;
-            opacity: 0.9;
-            margin-top: -5px;
-            background: rgba(0,0,0,0.15);
-            padding: 4px 12px;
-            border-radius: 20px;
+        .read-more:hover {
+            color: var(--secondary);
+            text-decoration: underline;
         }
 
         /* --- FOOTER --- */
         .footer {
             text-align: center;
             padding: 30px 20px;
+            background-color: white;
             color: var(--text-muted);
-            font-size: 0.85rem;
-            font-weight: 500;
-            margin-top: 20px;
+            font-size: 0.9rem;
+            border-top: 1px solid #e2e8f0;
         }
 
-        /* --- RESPONSIVE DESIGN --- */
-        @media (max-width: 600px) {
-            .header h1 {
-                font-size: 1.8rem;
-            }
-            .header h2 {
-                font-size: 0.9rem;
-            }
-            .grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-            }
-            .card {
-                padding: 20px 12px;
-                border-radius: 16px;
-            }
-            .card i {
-                font-size: 2.2rem;
-            }
-            .card span {
-                font-size: 0.8rem;
-            }
-            .category-wrapper {
-                padding: 20px 15px;
-            }
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2rem; }
+            .news-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -239,115 +192,91 @@
 
     <header class="header">
         <h2>Daerah Istimewa Yogyakarta</h2>
-        <h1>Portal Aplikasi PSMK</h1>
-        <p>Sistem Informasi Bidang Pendidikan Menengah Kejuruan</p>
+        <h1>Portal Informasi PSMK</h1>
+        <p>Kumpulan berita terkini, agenda, dan informasi seputar Pendidikan Menengah Kejuruan di lingkungan Dinas Dikpora DIY.</p>
     </header>
 
     <div class="container">
-
-        <div class="category-wrapper">
-            <!-- Kategori Program Unggulan -->
-            <div class="section-title"><i class="fa-solid fa-rocket"></i> Program Unggulan</div>
-            <div class="grid">
-                <a href="momenku.html" class="card featured">
-                    <i class="fa-solid fa-space-shuttle"></i>
-                    <span>MOMENKU 2025</span>
-                    <div class="sub-text">Klik untuk Akses</div>
-                </a>
-                <a href="revit2026.html" class="card">
-                    <i class="fa-solid fa-gears"></i>
-                    <span>Revitalisasi 2026</span>
-                </a>
-                <a href="pip.html" class="card">
-                    <i class="fa-solid fa-id-card-clip"></i>
-                    <span>Program PIP</span>
-                </a>
-            </div>
+        <div class="section-header">
+            <h3><i class="fa-regular fa-newspaper"></i> Berita & Informasi Terkini</h3>
         </div>
 
-        <div class="category-wrapper">
-            <!-- Kategori Kompetisi & LKS -->
-            <div class="section-title"><i class="fa-solid fa-trophy"></i> Kompetisi & LKS</div>
-            <div class="grid">
-                <a href="lksn_2026.html" class="card">
-                    <i class="fa-solid fa-medal"></i>
-                    <span>LKS Nasional 2026</span>
-                </a>
-                <a href="peserta.html" class="card">
-                    <i class="fa-solid fa-users-viewfinder"></i>
-                    <span>Data Peserta</span>
-                </a>
-                <a href="lks_foto.html" class="card">
-                    <i class="fa-regular fa-images"></i>
-                    <span>Galeri LKS</span>
-                </a>
-                <a href="lksn.html" class="card">
-                    <i class="fa-solid fa-folder-open"></i>
-                    <span>Arsip LKS</span>
-                </a>
-                <!-- Tombol Juri telah dihapus dari sini -->
-            </div>
+        <!-- Wadah ini akan diisi secara otomatis oleh JavaScript -->
+        <div class="news-grid" id="news-container">
+            <!-- Berita dirender di sini -->
         </div>
-
-        <div class="category-wrapper">
-            <!-- Kategori Data & Kelembagaan -->
-            <div class="section-title"><i class="fa-solid fa-building-columns"></i> Kelembagaan & BLUD</div>
-            <div class="grid">
-                <a href="smk.html" class="card">
-                    <i class="fa-solid fa-school-flag"></i>
-                    <span>Data SMK</span>
-                </a>
-                <a href="sleman.html" class="card">
-                    <i class="fa-solid fa-map-location-dot"></i>
-                    <span>SMK Sleman</span>
-                </a>
-                <a href="perizinan.html" class="card">
-                    <i class="fa-solid fa-file-signature"></i>
-                    <span>Perizinan SMK</span>
-                </a>
-                <a href="blud.html" class="card">
-                    <i class="fa-solid fa-chart-pie"></i>
-                    <span>Dashboard BLUD</span>
-                </a>
-                <a href="smk-blud.html" class="card">
-                    <i class="fa-solid fa-store"></i>
-                    <span>Data BLUD</span>
-                </a>
-                <a href="luar_negeri.html" class="card">
-                    <i class="fa-solid fa-globe"></i>
-                    <span>Kerja Sama LN</span>
-                </a>
-            </div>
-        </div>
-
-        <div class="category-wrapper">
-            <!-- Kategori Akademik & Administrasi -->
-            <div class="section-title"><i class="fa-solid fa-book-open-reader"></i> Akademik & Administrasi</div>
-            <div class="grid">
-                <a href="bimtek.html" class="card">
-                    <i class="fa-solid fa-chalkboard-user"></i>
-                    <span>Bimtek Kurikulum</span>
-                </a>
-                <a href="kelulusan.html" class="card">
-                    <i class="fa-solid fa-user-graduate"></i>
-                    <span>Data Kelulusan</span>
-                </a>
-                <a href="winasis.html" class="card">
-                    <i class="fa-solid fa-laptop-file"></i>
-                    <span>Aplikasi Winasis</span>
-                </a>
-                <a href="spj.html" class="card">
-                    <i class="fa-solid fa-file-invoice-dollar"></i>
-                    <span>Pengelolaan SPJ</span>
-                </a>
-            </div>
-        </div>
-
     </div>
 
     <footer class="footer">
-        &copy; 2026 Dinas Pendidikan, Pemuda, dan Olahraga Daerah Istimewa Yogyakarta
+        &copy; 2026 Bidang PSMK - Dinas Pendidikan, Pemuda, dan Olahraga Daerah Istimewa Yogyakarta
     </footer>
 
+    <!-- SCRIPT UNTUK MENYUSUN BERITA SECARA OTOMATIS -->
+    <script>
+        // Simulasi Data Berita (Di Apps Script, data ini bisa ditarik dari Spreadsheet)
+        const dataBerita = [
+            {
+                judul: "Bimtek Pendampingan Kurikulum SMK DIY Tahun 2026 Sukses Digelar",
+                tanggal: "8 Mei 2026",
+                gambar: "https://images.unsplash.com/photo-1577896851231-70ef18881754?w=600&auto=format&fit=crop&q=60",
+                ringkasan: "Kegiatan Bimbingan Teknis (Bimtek) pendampingan implementasi kurikulum SMK telah dilaksanakan guna meningkatkan kualitas pembelajaran di DIY.",
+                link: "#"
+            },
+            {
+                judul: "Pengembangan Dashboard Sistem Informasi Data Kelulusan Tingkat SMK",
+                tanggal: "4 Mei 2026",
+                gambar: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&auto=format&fit=crop&q=60",
+                ringkasan: "Optimalisasi dashboard pengelolaan data berbasis web terus dilakukan untuk memudahkan pelacakan status kelulusan siswa lintas kabupaten.",
+                link: "#"
+            },
+            {
+                judul: "Pembaruan Kelembagaan: Penyatuan SMK Kanisius 1 Pakem",
+                tanggal: "24 April 2026",
+                gambar: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600&auto=format&fit=crop&q=60",
+                ringkasan: "Proses administrasi dan perizinan terkait penyatuan institusi pendidikan SMK Kanisius 1 Pakem ke dalam SMK Sanjaya Pakem telah diterbitkan.",
+                link: "#"
+            },
+            {
+                judul: "Semarak Lomba Kompetensi Siswa (LKS) Jenjang Pendidikan Menengah 2026",
+                tanggal: "7 April 2026",
+                gambar: "https://images.unsplash.com/photo-1561489422-45de3d015e3e?w=600&auto=format&fit=crop&q=60",
+                ringkasan: "Ajang LKS tingkat Daerah Istimewa Yogyakarta kembali menjadi panggung unjuk gigi keterampilan vokasi para siswa SMK dari berbagai kompetensi keahlian.",
+                link: "#"
+            },
+            {
+                judul: "Sosialisasi Program Momenku Siap Berkemas 2026",
+                tanggal: "15 Maret 2026",
+                gambar: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&auto=format&fit=crop&q=60",
+                ringkasan: "Mendukung persiapan siswa SMK dalam menghadapi dunia kerja dan kemandirian melalui program inovatif unggulan dari Dinas Dikpora.",
+                link: "#"
+            }
+        ];
+
+        // Fungsi untuk merender berita secara otomatis ke dalam HTML
+        function renderBerita() {
+            const container = document.getElementById('news-container');
+            let htmlContent = '';
+
+            dataBerita.forEach(berita => {
+                htmlContent += `
+                    <div class="news-card">
+                        <img src="${berita.gambar}" alt="Ilustrasi Berita" class="news-image">
+                        <div class="news-content">
+                            <div class="news-date"><i class="fa-regular fa-calendar"></i> ${berita.tanggal}</div>
+                            <h4 class="news-title">${berita.judul}</h4>
+                            <p class="news-excerpt">${berita.ringkasan}</p>
+                            <a href="${berita.link}" class="read-more">Baca Selengkapnya &rarr;</a>
+                        </div>
+                    </div>
+                `;
+            });
+
+            // Memasukkan hasil susunan ke dalam halaman
+            container.innerHTML = htmlContent;
+        }
+
+        // Jalankan fungsi saat halaman selesai dimuat
+        document.addEventListener('DOMContentLoaded', renderBerita);
+    </script>
 </body>
 </html>
