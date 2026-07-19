@@ -4,144 +4,282 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portal Aplikasi - PSMK Dikpora DIY</title>
+    
+    <!-- Menggunakan Font Google (Inter) untuk tampilan modern -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Menggunakan FontAwesome untuk Ilustrasi/Ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
         :root {
-            --primary-color: #2563eb;
-            --hover-color: #1d4ed8;
-            --bg-color: #f3f4f6;
-            --text-main: #1f2937;
-            --text-muted: #6b7280;
+            --primary: #1e40af; /* Biru Profesional */
+            --secondary: #3b82f6; /* Biru Cerah */
+            --accent: #f59e0b; /* Aksen Kuning/Oranye */
+            --bg-body: #f8fafc;
+            --bg-card: #ffffff;
+            --text-dark: #0f172a;
+            --text-gray: #64748b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            margin: 0;
-            padding: 40px 20px;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Bagian Header / Hero */
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 60px 20px 40px;
+            text-align: center;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1rem;
+            opacity: 0.9;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 20px 60px;
         }
 
-        .header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .header h1 {
-            font-size: 2.5rem;
-            margin: 0 0 10px 0;
-            color: var(--primary-color);
-        }
-
-        .header p {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            margin: 0;
-        }
-
-        .category-title {
-            font-size: 1.25rem;
-            font-weight: bold;
-            color: var(--text-main);
-            border-bottom: 2px solid #e5e7eb;
-            padding-bottom: 10px;
-            margin: 40px 0 20px 0;
-        }
-
-        .grid-menu {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .menu-btn {
-            background-color: #ffffff;
-            border: 1px solid #e5e7eb;
-            border-radius: 10px;
-            padding: 24px 20px;
-            text-align: center;
-            text-decoration: none;
-            color: var(--text-main);
+        /* Judul Kategori */
+        .section-title {
+            font-size: 1.2rem;
             font-weight: 600;
-            font-size: 1.1rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
+            color: var(--primary);
+            margin: 30px 0 15px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            min-height: 80px;
+            gap: 10px;
         }
 
-        .menu-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            border-color: var(--primary-color);
-            color: var(--primary-color);
+        .section-title i {
+            color: var(--accent);
         }
-        
-        /* Footer styling */
+
+        /* Grid Layout (Responsif & Mobile First) */
+        .grid {
+            display: grid;
+            /* Di HP akan menjadi 2 kolom, di Desktop bisa 4-5 kolom */
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        /* Desain Kartu / Tombol */
+        .card {
+            background-color: var(--bg-card);
+            border-radius: 16px;
+            padding: 20px 15px;
+            text-decoration: none;
+            color: var(--text-dark);
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+            border-color: var(--secondary);
+        }
+
+        .card i {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover i {
+            transform: scale(1.1);
+        }
+
+        .card span {
+            font-size: 0.9rem;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        /* Desain Khusus "Momenku Siap Berkemas 2025" */
+        .card.featured {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+            border: none;
+            grid-column: span 2; /* Mengambil ruang 2 kolom agar lebih mencolok */
+        }
+
+        .card.featured i {
+            color: white;
+            font-size: 3rem;
+        }
+
+        .card.featured span {
+            font-size: 1rem;
+        }
+
+        /* Footer */
         .footer {
             text-align: center;
-            margin-top: 60px;
-            color: var(--text-muted);
-            font-size: 0.9rem;
+            padding: 20px;
+            color: var(--text-gray);
+            font-size: 0.85rem;
+            margin-top: 40px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        /* Penyesuaian untuk layar HP kecil */
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            .grid {
+                grid-template-columns: repeat(2, 1fr); /* Pastikan selalu 2 kolom di HP */
+            }
+            .card.featured {
+                grid-column: span 2;
+            }
+            .card i {
+                font-size: 2rem;
+            }
+            .card span {
+                font-size: 0.8rem;
+            }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="header">
+    <header class="header">
         <h1>Portal Aplikasi PSMK</h1>
         <p>Sistem Informasi Bidang Pendidikan Menengah Kejuruan</p>
+    </header>
+
+    <div class="container">
+
+        <!-- Kategori Program Unggulan -->
+        <h2 class="section-title"><i class="fa-solid fa-star"></i> Program Unggulan</h2>
+        <div class="grid">
+            <a href="momenku.html" class="card featured">
+                <i class="fa-solid fa-rocket"></i>
+                <span>Momenku Siap Berkemas 2025</span>
+            </a>
+            <a href="revit2026.html" class="card">
+                <i class="fa-solid fa-cogs"></i>
+                <span>Revitalisasi 2026</span>
+            </a>
+            <a href="pip.html" class="card">
+                <i class="fa-solid fa-medal"></i>
+                <span>Program PIP</span>
+            </a>
+        </div>
+
+        <!-- Kategori Kompetisi & LKS -->
+        <h2 class="section-title"><i class="fa-solid fa-trophy"></i> Kompetisi & LKS</h2>
+        <div class="grid">
+            <a href="lksn_2026.html" class="card">
+                <i class="fa-solid fa-award"></i>
+                <span>LKS Nasional 2026</span>
+            </a>
+            <a href="peserta.html" class="card">
+                <i class="fa-solid fa-users"></i>
+                <span>Data Peserta</span>
+            </a>
+            <a href="juri.html" class="card">
+                <i class="fa-solid fa-user-tie"></i>
+                <span>Data Juri</span>
+            </a>
+            <a href="lks_foto.html" class="card">
+                <i class="fa-solid fa-images"></i>
+                <span>Galeri LKS</span>
+            </a>
+            <a href="lksn.html" class="card">
+                <i class="fa-solid fa-box-archive"></i>
+                <span>Arsip LKS</span>
+            </a>
+        </div>
+
+        <!-- Kategori Data & Kelembagaan -->
+        <h2 class="section-title"><i class="fa-solid fa-building-columns"></i> Kelembagaan</h2>
+        <div class="grid">
+            <a href="smk.html" class="card">
+                <i class="fa-solid fa-school"></i>
+                <span>Data SMK</span>
+            </a>
+            <a href="sleman.html" class="card">
+                <i class="fa-solid fa-map-location-dot"></i>
+                <span>SMK Sleman</span>
+            </a>
+            <a href="perizinan.html" class="card">
+                <i class="fa-solid fa-file-signature"></i>
+                <span>Perizinan SMK</span>
+            </a>
+            <a href="blud.html" class="card">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Dashboard BLUD</span>
+            </a>
+            <a href="smk-blud.html" class="card">
+                <i class="fa-solid fa-store"></i>
+                <span>Data BLUD</span>
+            </a>
+            <a href="luar_negeri.html" class="card">
+                <i class="fa-solid fa-earth-asia"></i>
+                <span>Kerja Sama LN</span>
+            </a>
+        </div>
+
+        <!-- Kategori Akademik & Administrasi -->
+        <h2 class="section-title"><i class="fa-solid fa-book-open"></i> Akademik & Administrasi</h2>
+        <div class="grid">
+            <a href="bimtek.html" class="card">
+                <i class="fa-solid fa-chalkboard-user"></i>
+                <span>Bimtek Kurikulum</span>
+            </a>
+            <a href="kelulusan.html" class="card">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <span>Data Kelulusan</span>
+            </a>
+            <a href="winasis.html" class="card">
+                <i class="fa-solid fa-laptop-code"></i>
+                <span>Aplikasi Winasis</span>
+            </a>
+            <a href="spj.html" class="card">
+                <i class="fa-solid fa-file-invoice-dollar"></i>
+                <span>Pengelolaan SPJ</span>
+            </a>
+        </div>
+
     </div>
 
-    <!-- Kategori 1: Kompetisi & Acara -->
-    <div class="category-title">Kompetisi & LKS</div>
-    <div class="grid-menu">
-        <a href="lksn_2026.html" class="menu-btn">LKS Nasional 2026</a>
-        <a href="lksn.html" class="menu-btn">LKS Nasional (Arsip)</a>
-        <a href="lks_foto.html" class="menu-btn">Galeri Foto LKS</a>
-        <a href="juri.html" class="menu-btn">Data Juri</a>
-        <a href="peserta.html" class="menu-btn">Data Peserta</a>
-    </div>
-
-    <!-- Kategori 2: Data Sekolah & Kelembagaan -->
-    <div class="category-title">Data Kelembagaan</div>
-    <div class="grid-menu">
-        <a href="smk.html" class="menu-btn">Data SMK</a>
-        <a href="sleman.html" class="menu-btn">Data SMK Sleman</a>
-        <a href="perizinan.html" class="menu-btn">Perizinan SMK</a>
-        <a href="blud.html" class="menu-btn">Dashboard BLUD</a>
-        <a href="smk-blud.html" class="menu-btn">Data SMK BLUD</a>
-        <a href="luar_negeri.html" class="menu-btn">Kerja Sama Luar Negeri</a>
-    </div>
-
-    <!-- Kategori 3: Program & Kurikulum -->
-    <div class="category-title">Program & Akademik</div>
-    <div class="grid-menu">
-        <a href="bimtek.html" class="menu-btn">Bimtek Pendampingan</a>
-        <a href="kelulusan.html" class="menu-btn">Data Kelulusan</a>
-        <a href="pip.html" class="menu-btn">Program Indonesia Pintar (PIP)</a>
-        <a href="revit2026.html" class="menu-btn">Revitalisasi SMK 2026</a>
-        <a href="revit.html" class="menu-btn">Revitalisasi SMK (Arsip)</a>
-        <a href="winasis.html" class="menu-btn">Aplikasi Winasis</a>
-    </div>
-
-    <!-- Kategori 4: Administrasi -->
-    <div class="category-title">Administrasi</div>
-    <div class="grid-menu">
-        <a href="spj.html" class="menu-btn">Pengelolaan SPJ</a>
-    </div>
-
-    <div class="footer">
-        <p>&copy; 2026 Dinas Pendidikan, Pemuda, dan Olahraga Daerah Istimewa Yogyakarta</p>
-    </div>
-</div>
+    <footer class="footer">
+        &copy; 2026 Dinas Pendidikan, Pemuda, dan Olahraga Daerah Istimewa Yogyakarta
+    </footer>
 
 </body>
 </html>
