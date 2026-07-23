@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* --- Definisi Properti CSS (dari kode kedua) --- */
+        /* --- Definisi Properti CSS --- */
         @property --s-anim {
             syntax: "<percentage>";
             inherits: false;
@@ -49,42 +49,41 @@
             initial-value: 0deg;
         }
 
-        /* --- Reset Dasar (dari kode kedua) --- */
+        /* --- Reset Dasar --- */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        /* --- Gaya Bodi yang Digabungkan --- */
+        /* --- Gaya Bodi --- */
         html,
         body {
             width: 100%;
-            /* Ganti height: 100svh dan overflow: hidden untuk memungkinkan pengguliran */
             min-height: 100vh; 
-            background: #000; /* Latar belakang hitam dari kode kedua */
-            display: flex; /* Ganti grid menjadi flex untuk penumpukan vertikal */
+            background: #000; 
+            display: flex; 
             flex-direction: column;
-            align-items: center; /* Tengahkan secara horizontal */
-            justify-content: flex-start; /* Mulai dari atas */
-            padding: 20px; /* Jarak padding */
-            color: #fff; /* Warna teks putih dasar */
-            font-family: "Fjalla One", sans-serif; /* Font default dari kode kedua */
+            align-items: center; 
+            justify-content: flex-start; 
+            padding: 20px; 
+            color: #fff; 
+            font-family: "Fjalla One", sans-serif; 
             line-height: 1.5;
         }
 
-        /* --- Gaya Galeri Gambar (dari kode pertama, disesuaikan) --- */
+        /* --- Gaya Galeri Gambar --- */
         .gallery-section {
             display: flex;
             flex-direction: column;
             align-items: center;
             width: 100%;
-            margin-top: 50px; /* Jarak dari animasi */
-            font-family: sans-serif; /* Font bersih untuk galeri */
+            margin-top: 50px; 
+            font-family: sans-serif; 
         }
 
         .gallery {
-            --s-bevel: 50px; /* Mengubah nama variabel agar tidak konflik */
+            --s-bevel: 50px; 
             
             display: flex;
             gap: 10px;
@@ -99,7 +98,6 @@
             min-width: 0;
             height: 300px;
             object-fit: cover;
-            /* Properti radius sudut */
             border-start-start-radius: var(--s-bevel) 100%;
             border-end-end-radius: var(--s-bevel) 100%;
             margin-inline-end: calc(-1 * var(--s-bevel));
@@ -112,7 +110,6 @@
             flex: 1.6;
         }
 
-        /* Menyesuaikan radius sudut pada hover untuk gambar saat ini dan sekitarnya */
         .gallery > img:is(:first-child, :hover),
         .gallery > img:hover + * {
             border-start-start-radius: 0 100%;
@@ -124,7 +121,6 @@
             margin-inline-end: 0;
         }
 
-        /* Cadangan untuk browser yang tidak mendukung corner-shape: bevel */
         @supports not (corner-shape: bevel) {
             .gallery > img {
                 border-radius: 0 !important;
@@ -132,7 +128,7 @@
             }
         }
 
-        /* --- Gaya Animasi Teks (dari kode kedua) --- */
+        /* --- Gaya Animasi Teks --- */
         .scene,
         .scene2 {
             position: relative;
@@ -140,11 +136,11 @@
             font-size: clamp(1.2rem, 4vw, 3rem); 
             transform-style: preserve-3d;
             perspective: 1000px;
-            margin-bottom: 20px; /* Sedikit jarak antar adegan */
+            margin-bottom: 20px; 
         }
 
         .scene2 {
-            position: absolute; /* Tumpang tindih adegan */
+            position: absolute; 
         }
 
         .scene {
@@ -214,7 +210,7 @@
             color: red;
         }
 
-        /* --- Keyframes Animasi (dari kode kedua) --- */
+        /* --- Keyframes Animasi --- */
         @keyframes move {
             0% { --x: -180%; --sc: 1; --ry: -33deg; opacity: 0; }
             1% { --x: -180%; --sc: 1; --ry: -33deg; opacity: 1; }
@@ -270,24 +266,37 @@
 
 <!-- --- Bagian Galeri --- -->
 <div class="gallery-section">
-    <h2 style="color: #fff; margin-bottom: 20px;">Galeri Visual</h2>
+    <h2 style="color: #fff; margin-bottom: 20px;">Galeri Dokumentasi</h2>
     
+    <!-- Baris 1: 6 Foto -->
     <div class="gallery">
-        <img src="https://picsum.photos/id/433/600/400" alt="Beruang">
-        <img src="https://picsum.photos/id/582/600/400" alt="Serigala">
-        <img src="https://picsum.photos/id/1074/600/400" alt="Singa betina">
-        <img src="https://picsum.photos/id/237/600/400" alt="Anjing">
-        <img src="https://picsum.photos/id/659/600/400" alt="Sejenis serigala">
-        <img src="https://picsum.photos/id/593/600/400" alt="Harimau">
+        <img src="https://drive.google.com/uc?export=view&id=1uVDq8zn2mTa-xhduyKq1ruoE2xY5LkU2" alt="Dokumentasi SMK 1">
+        <img src="https://drive.google.com/uc?export=view&id=1MzBrXxJBrMHKIah9CT5sJMIWO3caa15_" alt="Dokumentasi SMK 2">
+        <img src="https://drive.google.com/uc?export=view&id=1AIy3JPIOOGdmychMMu0G-YCZ9xBUoND8" alt="Dokumentasi SMK 3">
+        <img src="https://drive.google.com/uc?export=view&id=1Ng2ynU6cloE5zomOGZyR7_NWkpW23TLy" alt="Dokumentasi SMK 4">
+        <img src="https://drive.google.com/uc?export=view&id=1yHpM8f0h_D8ULeejJBo5ZtfHXxtqqGv8" alt="Dokumentasi SMK 5">
+        <img src="https://drive.google.com/uc?export=view&id=1d8SP_dWRQRw4rsa3wxFPiEr9cT47eSzZ" alt="Dokumentasi SMK 6">
     </div>
     
+    <!-- Baris 2: 6 Foto (Arah terbalik / rtl) -->
     <div class="gallery" style="direction: rtl;">
-        <img src="https://picsum.photos/id/433/600/400" alt="Beruang">
-        <img src="https://picsum.photos/id/582/600/400" alt="Serigala">
-        <img src="https://picsum.photos/id/1074/600/400" alt="Singa betina">
-        <img src="https://picsum.photos/id/237/600/400" alt="Anjing">
-        <img src="https://picsum.photos/id/659/600/400" alt="Sejenis serigala">
-        <img src="https://picsum.photos/id/593/600/400" alt="Harimau">
+        <img src="https://drive.google.com/uc?export=view&id=1hjG6sUeT9-5st4ihImiOvKiKwcirIEle" alt="Dokumentasi SMK 7">
+        <img src="https://drive.google.com/uc?export=view&id=1P9DHYzdg0vklLyBMtMqipQm1gBvl0y8h" alt="Dokumentasi SMK 8">
+        <img src="https://drive.google.com/uc?export=view&id=10yNPj3r3saYVUl5jFi78lMQ5LmoK_e9K" alt="Dokumentasi SMK 9">
+        <img src="https://drive.google.com/uc?export=view&id=1h0fF4L8Xs_5x8-_AxLq9I_2pwk6k9aq7" alt="Dokumentasi SMK 10">
+        <img src="https://drive.google.com/uc?export=view&id=1Cv6eBxyuYz2ePkSXgr42uLHtGekX6QAf" alt="Dokumentasi SMK 11">
+        <img src="https://drive.google.com/uc?export=view&id=1ZTzL5sd-Cu7BooZ5epetO8wQAUdcJfWx" alt="Dokumentasi SMK 12">
+    </div>
+
+    <!-- Baris 3: 7 Foto -->
+    <div class="gallery">
+        <img src="https://drive.google.com/uc?export=view&id=1aFTHAvxMQEcMKj5qm7y0aOtB3j0n0qrf" alt="Dokumentasi SMK 13">
+        <img src="https://drive.google.com/uc?export=view&id=1Ra-dI_gzYp4UYQ-QH6zt1eG75HG5Jk1n" alt="Dokumentasi SMK 14">
+        <img src="https://drive.google.com/uc?export=view&id=1-vCD_k2aj4EW6TFWw-EQPzIaOLlDYRyw" alt="Dokumentasi SMK 15">
+        <img src="https://drive.google.com/uc?export=view&id=1M3HtfGidIxyUkFA4q1l6w3mkZ1nX9oQp" alt="Dokumentasi SMK 16">
+        <img src="https://drive.google.com/uc?export=view&id=1t-SiGA57Xx9wfOK9_C65vWaPpkDdZ-7i" alt="Dokumentasi SMK 17">
+        <img src="https://drive.google.com/uc?export=view&id=1-ShLwozQsWaAbDrxr7pCBGL0ef3-hW_R" alt="Dokumentasi SMK 18">
+        <img src="https://drive.google.com/uc?export=view&id=1MHB3tcSu_jJ7tvE6xrOhm9c3Q-M43LkZ" alt="Dokumentasi SMK 19">
     </div>
 </div>
 
