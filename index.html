@@ -5,265 +5,291 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portal Berita PSMK Dikpora DIY</title>
     
-    <!-- Font Inter untuk Tampilan Modern -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Fjalla One untuk Teks Animasi -->
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
     
     <!-- FontAwesome untuk Ikon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-       @import url("https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap");
+        /* --- Definisi Properti CSS (dari kode kedua) --- */
+        @property --s-anim {
+            syntax: "<percentage>";
+            inherits: false;
+            initial-value: 0%;
+        }
+        @property --sm {
+            syntax: "<percentage>";
+            inherits: false;
+            initial-value: 0%;
+        }
+        @property --x {
+            syntax: "<percentage>";
+            inherits: false;
+            initial-value: -180%;
+        }
+        @property --x2 {
+            syntax: "<percentage>";
+            inherits: false;
+            initial-value: 0%;
+        }
+        @property --sc {
+            syntax: "<numbers>";
+            inherits: false;
+            initial-value: 1;
+        }
+        @property --ry {
+            syntax: "<degrees>";
+            inherits: false;
+            initial-value: -33deg;
+        }
+        @property --ry2 {
+            syntax: "<angle>";
+            inherits: false;
+            initial-value: 0deg;
+        }
 
-@property --s {
-	syntax: "<percentage>";
-	inherits: false;
-	initial-value: 0%;
-}
-@property --sm {
-	syntax: "<percentage>";
-	inherits: false;
-	initial-value: 0%;
-}
-@property --x {
-	syntax: "<percentage>";
-	inherits: false;
-	initial-value: -180%;
-}
-@property --x2 {
-	syntax: "<percentage>";
-	inherits: false;
-	initial-value: 0%;
-}
-@property --sc {
-	syntax: "<numbers>";
-	inherits: false;
-	initial-value: 1;
-}
-@property --ry {
-	syntax: "<degrees>";
-	inherits: false;
-	initial-value: -33deg;
-}
-@property --ry2 {
-	syntax: "<angle>";
-	inherits: false;
-	initial-value: 0deg;
-}
+        /* --- Reset Dasar (dari kode kedua) --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: "Fjalla One", sans-serif;
-}
+        /* --- Gaya Bodi yang Digabungkan --- */
+        html,
+        body {
+            width: 100%;
+            /* Ganti height: 100svh dan overflow: hidden untuk memungkinkan pengguliran */
+            min-height: 100vh; 
+            background: #000; /* Latar belakang hitam dari kode kedua */
+            display: flex; /* Ganti grid menjadi flex untuk penumpukan vertikal */
+            flex-direction: column;
+            align-items: center; /* Tengahkan secara horizontal */
+            justify-content: flex-start; /* Mulai dari atas */
+            padding: 20px; /* Jarak padding */
+            color: #fff; /* Warna teks putih dasar */
+            font-family: "Fjalla One", sans-serif; /* Font default dari kode kedua */
+            line-height: 1.5;
+        }
 
-html,
-body {
-	width: 100%;
-	height: 100svh;
-	background: #000;
-	display: grid;
-	place-items: center;
-	overflow: hidden;
-}
+        /* --- Gaya Galeri Gambar (dari kode pertama, disesuaikan) --- */
+        .gallery-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            margin-top: 50px; /* Jarak dari animasi */
+            font-family: sans-serif; /* Font bersih untuk galeri */
+        }
 
-.scene,
-.scene2 {
-	position: relative;
-	color: #fff;
-	font-size: clamp(1.2rem, 4vw, 3rem); 
-	transform-style: preserve-3d;
-	perspective: 1000px;
-}
+        .gallery {
+            --s-bevel: 50px; /* Mengubah nama variabel agar tidak konflik */
+            
+            display: flex;
+            gap: 10px;
+            margin: 10px;
+            width: 100%;
+            max-width: 1200px;
+            justify-content: center;
+        }
 
-.scene2 {
-	position: absolute;
-}
+        .gallery > img {
+            flex: 1;
+            min-width: 0;
+            height: 300px;
+            object-fit: cover;
+            /* Properti radius sudut */
+            border-start-start-radius: var(--s-bevel) 100%;
+            border-end-end-radius: var(--s-bevel) 100%;
+            margin-inline-end: calc(-1 * var(--s-bevel));
+            corner-shape: bevel;
+            cursor: pointer;
+            transition: .3s linear;
+        }
 
-.scene {
-	width: fit-content;
-}
+        .gallery > img:hover {
+            flex: 1.6;
+        }
 
-.scene span {
-	display: block;
-}
+        /* Menyesuaikan radius sudut pada hover untuk gambar saat ini dan sekitarnya */
+        .gallery > img:is(:first-child, :hover),
+        .gallery > img:hover + * {
+            border-start-start-radius: 0 100%;
+        }
 
-/* Mengubah durasi ke 10s dan menjadikannya infinite */
-.move-number {
-	position: absolute;
-	right: 0;
-	transform-style: preserve-3d;
-	perspective: 1000px;
-	transform: translateX(var(--x));
-	animation: move 10s linear infinite; 
-	will-change: transform;
-}
+        .gallery > img:is(:last-child, :hover),
+        .gallery > img:has(+ :hover) {
+            border-end-end-radius: 0 100%;
+            margin-inline-end: 0;
+        }
 
-.move-letter {
-	position: absolute;
-	left: var(--x2);
-	right: 0;
-	opacity: 0;
-	transform: rotate(var(--ry2));
-	animation: moveletter 10s ease-in-out infinite; /* Delay dihilangkan, diatur di keyframes */
-	display: inline-block;
-	width: fit-content;
-}
+        /* Cadangan untuk browser yang tidak mendukung corner-shape: bevel */
+        @supports not (corner-shape: bevel) {
+            .gallery > img {
+                border-radius: 0 !important;
+                margin: 0 !important;
+            }
+        }
 
-.last-item {
-	transform: scale(1, var(--sc)) rotateY(var(--ry)) translateZ(-3px);
-	color: red;
-	transition: transform 0.3s linear;
-}
+        /* --- Gaya Animasi Teks (dari kode kedua) --- */
+        .scene,
+        .scene2 {
+            position: relative;
+            color: #fff;
+            font-size: clamp(1.2rem, 4vw, 3rem); 
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            margin-bottom: 20px; /* Sedikit jarak antar adegan */
+        }
 
-.number-container {
-	mask: linear-gradient(
-		to right,
-		transparent 0%,
-		black 0%,
-		black var(--s),
-		transparent var(--s)
-	);
-	transform: translateZ(2px);
-	animation: move2 10s ease-in-out infinite; 
-}
+        .scene2 {
+            position: absolute; /* Tumpang tindih adegan */
+        }
 
-.msn-container {
-	mask: linear-gradient(
-		to right,
-		transparent 0%,
-		black 0%,
-		black var(--sm),
-		transparent var(--sm)
-	);
-	animation: msn-container 10s ease-in-out infinite; /* Delay dihilangkan, diatur di keyframes */
-}
+        .scene {
+            width: fit-content;
+        }
 
-.mask-number {
-	display: flex;
-	white-space: pre; 
-}
+        .scene span {
+            display: block;
+        }
 
-.mask-number span {
-	color: red;
-}
+        .move-number {
+            position: absolute;
+            right: 0;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            transform: translateX(var(--x));
+            animation: move 10s linear infinite; 
+            will-change: transform;
+        }
 
-/* 
-  KEYFRAMES TELAH DISINKRONKAN UNTUK LOOP 10 DETIK 
-  0% - 40%   : Scene 1 Muncul dan Menghilang
-  40% - 80%  : Scene 2 Muncul dan Menghilang
-  80% - 100% : Jeda kosong sebelum ulang lagi
-*/
+        .move-letter {
+            position: absolute;
+            left: var(--x2);
+            right: 0;
+            opacity: 0;
+            transform: rotate(var(--ry2));
+            animation: moveletter 10s ease-in-out infinite; 
+            display: inline-block;
+            width: fit-content;
+        }
 
-@keyframes move {
-	0% {
-		--x: -180%;
-		--sc: 1;
-		--ry: -33deg;
-		opacity: 0;
-	}
-	1% {
-		--x: -180%;
-		--sc: 1;
-		--ry: -33deg;
-		opacity: 1;
-	}
-	9% {
-		--sc: 2;
-		--x: 94%;
-		--ry: -33deg;
-	}
-	20% {
-		--sc: 1;
-		--ry: 0deg;
-		--x: 94%;
-	}
-	27% {
-		--sc: 2;
-		--ry: -33deg;
-		--x: 94%;
-	}
-	36% {
-		--x: -180%;
-		--sc: 1;
-		--ry: -33deg;
-		opacity: 1;
-	}
-	38%, 100% {
-		--x: -180%;
-		--sc: 1;
-		--ry: -33deg;
-		opacity: 0;
-	}
-}
+        .last-item {
+            transform: scale(1, var(--sc)) rotateY(var(--ry)) translateZ(-3px);
+            color: red;
+            transition: transform 0.3s linear;
+        }
 
-@keyframes move2 {
-	0% { --s: 0%; }
-	10%, 27% { --s: 100%; }
-	36%, 100% { --s: 0%; }
-}
+        .number-container {
+            mask: linear-gradient(
+                to right,
+                transparent 0%,
+                black 0%,
+                black var(--s-anim),
+                transparent var(--s-anim)
+            );
+            transform: translateZ(2px);
+            animation: move2 10s ease-in-out infinite; 
+        }
 
-@keyframes moveletter {
-	0%, 39% {
-		opacity: 0;
-		--x2: 0%;
-		--ry2: 0deg;
-	}
-	40% {
-		opacity: 1;
-		--x2: 0%;
-		--ry2: 0deg;
-	}
-	49%, 70% {
-		--x2: 93%;
-		--ry2: 720deg;
-		opacity: 1;
-	}
-	79% {
-		--x2: 0%;
-		--ry2: 0deg;
-		opacity: 1;
-	}
-	80%, 100% {
-		opacity: 0;
-		--x2: 0%;
-		--ry2: 0deg;
-	}
-}
+        .msn-container {
+            mask: linear-gradient(
+                to right,
+                transparent 0%,
+                black 0%,
+                black var(--sm),
+                transparent var(--sm)
+            );
+            animation: msn-container 10s ease-in-out infinite;
+        }
 
-@keyframes msn-container {
-	0%, 40% {
-		filter: blur(30px) contrast(10);
-		--sm: 0%;
-	}
-	50%, 70% {
-		filter: blur(0px) contrast(10);
-		--sm: 100%;
-	}
-	80%, 100% {
-		filter: blur(30px) contrast(10);
-		--sm: 0%;
-	}
-}
+        .mask-number {
+            display: flex;
+            white-space: pre; 
+        }
+
+        .mask-number span {
+            color: red;
+        }
+
+        /* --- Keyframes Animasi (dari kode kedua) --- */
+        @keyframes move {
+            0% { --x: -180%; --sc: 1; --ry: -33deg; opacity: 0; }
+            1% { --x: -180%; --sc: 1; --ry: -33deg; opacity: 1; }
+            9% { --sc: 2; --x: 94%; --ry: -33deg; }
+            20% { --sc: 1; --ry: 0deg; --x: 94%; }
+            27% { --sc: 2; --ry: -33deg; --x: 94%; }
+            36% { --x: -180%; --sc: 1; --ry: -33deg; opacity: 1; }
+            38%, 100% { --x: -180%; --sc: 1; --ry: -33deg; opacity: 0; }
+        }
+
+        @keyframes move2 {
+            0% { --s-anim: 0%; }
+            10%, 27% { --s-anim: 100%; }
+            36%, 100% { --s-anim: 0%; }
+        }
+
+        @keyframes moveletter {
+            0%, 39% { opacity: 0; --x2: 0%; --ry2: 0deg; }
+            40% { opacity: 1; --x2: 0%; --ry2: 0deg; }
+            49%, 70% { --x2: 93%; --ry2: 720deg; opacity: 1; }
+            79% { --x2: 0%; --ry2: 0deg; opacity: 1; }
+            80%, 100% { opacity: 0; --x2: 0%; --ry2: 0deg; }
+        }
+
+        @keyframes msn-container {
+            0%, 40% { filter: blur(30px) contrast(10); --sm: 0%; }
+            50%, 70% { filter: blur(0px) contrast(10); --sm: 100%; }
+            80%, 100% { filter: blur(30px) contrast(10); --sm: 0%; }
+        }
     </style>
 </head>
 <body>
 
-<div class="scene">
-	<div class="move-number">
-		<span class="last-item"> SMK</span>
-	</div>
-	<div class="number-container">
-		<span class="mask-number">Bidang Pembinaan  </span>
-	</div>
+<!-- --- Bagian Animasi Intro --- -->
+<div class="intro-section" style="position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 200px;">
+    <div class="scene">
+        <div class="move-number">
+            <span class="last-item"> SMK</span>
+        </div>
+        <div class="number-container">
+            <span class="mask-number">Bidang Pembinaan </span>
+        </div>
+    </div>
+    <div class="scene2">
+        <div class="move-letter">
+            <span class="last-item">Y</span>
+        </div>
+        <div class="msn-container">
+            <span class="mask-number">Disdikpora <span>DIY</span></span>
+        </div>
+    </div>
 </div>
-<div class="scene2">
-	<div class="move-letter">
-		<span class="last-item">Y</span>
-	</div>
-	<div class="msn-container">
-		<span class="mask-number">Disdikpora  <span>DIY</span></span>
-	</div>
+
+<!-- --- Bagian Galeri --- -->
+<div class="gallery-section">
+    <h2 style="color: #fff; margin-bottom: 20px;">Galeri Visual</h2>
+    
+    <div class="gallery">
+        <img src="https://picsum.photos/id/433/600/400" alt="Beruang">
+        <img src="https://picsum.photos/id/582/600/400" alt="Serigala">
+        <img src="https://picsum.photos/id/1074/600/400" alt="Singa betina">
+        <img src="https://picsum.photos/id/237/600/400" alt="Anjing">
+        <img src="https://picsum.photos/id/659/600/400" alt="Sejenis serigala">
+        <img src="https://picsum.photos/id/593/600/400" alt="Harimau">
+    </div>
+    
+    <div class="gallery" style="direction: rtl;">
+        <img src="https://picsum.photos/id/433/600/400" alt="Beruang">
+        <img src="https://picsum.photos/id/582/600/400" alt="Serigala">
+        <img src="https://picsum.photos/id/1074/600/400" alt="Singa betina">
+        <img src="https://picsum.photos/id/237/600/400" alt="Anjing">
+        <img src="https://picsum.photos/id/659/600/400" alt="Sejenis serigala">
+        <img src="https://picsum.photos/id/593/600/400" alt="Harimau">
+    </div>
 </div>
+
 </body>
 </html>
